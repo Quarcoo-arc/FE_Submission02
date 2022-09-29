@@ -23,6 +23,31 @@ header {
   height: 2.2rem;
 }
 
+nav {
+  width: 10rem;
+  display: flex;
+  align-items: center;
+  padding-top: 2rem;
+  flex-direction: column;
+}
+
+main {
+  border-left: 1px solid #a8a8a8;
+  display: flex;
+  width: 100%;
+  padding: 0rem 2rem 1rem;
+  box-sizing: border-box;
+  flex-direction: column;
+}
+
+table {
+  border: 2px solid #a8a8a8;
+}
+
+h2 {
+  margin: 1rem 0;
+}
+
 .circles {
   display: flex;
   flex-direction: row;
@@ -55,14 +80,6 @@ header {
   width: 5rem;
 }
 
-nav {
-  width: 10rem;
-  display: flex;
-  align-items: center;
-  padding-top: 2rem;
-  flex-direction: column;
-}
-
 .links {
   margin-top: 2rem;
   display: flex;
@@ -71,17 +88,85 @@ nav {
   justify-content: space-evenly;
 }
 
-main {
-  border-left: 1px solid #a8a8a8;
-  display: flex;
-  width: 100%;
-  padding: 1rem 2rem;
-  box-sizing: border-box;
-  flex-direction: column;
-  height: 100vh;
-}
-
 .flex-container {
   display: flex;
   flex-direction: row;
+}
+
+.highligths {
+  display: flex;
+  flex-direction: row;
+}
+
+.card {
+  width: 8rem;
+  height: 2.5rem;
+  border: 2px solid #a8a8a8;
+  display: inline-block;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.4rem;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 6px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #1f2e78;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #1f2e78;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 30px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
 }
