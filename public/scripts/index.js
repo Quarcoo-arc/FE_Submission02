@@ -157,6 +157,22 @@ const getDashboardInfo = async () => {
     // Update chat on toggle of toggleBtn
     toggleBtn.addEventListener("change", switchChart);
 
+    const tableBody = document.getElementsByTagName("tbody")[0];
+
+    let tableRows = ``;
+
+    data.dashboard.bestsellers.forEach((item) => {
+      tableRows += `
+            <tr>
+              <td>${item.product.name}</td>
+              <td>$${item.revenue / item.units}</td>
+              <td>${item.units}</td>
+              <td>$${item.revenue}</td>
+            </tr>`;
+    });
+
+    tableBody.innerHTML = tableRows;
+
     // If token is invalid, redirect to login page
   } else {
     window.location.href = "./login.html";
