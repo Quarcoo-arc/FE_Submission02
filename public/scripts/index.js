@@ -44,52 +44,66 @@ const getDashboardInfo = async () => {
     const lastMonthOrdersSpan = document.getElementById("last-month-orders");
 
     todayTotalSpan.textContent = shortenNum(
-      data.dashboard.sales_over_time_week[1].total
+      await data.dashboard.sales_over_time_week[1].total
     );
     todayOrdersSpan.textContent = shortenNum(
-      data.dashboard.sales_over_time_week[1].orders
+      await data.dashboard.sales_over_time_week[1].orders
     );
 
     lastWeekTotalSpan.textContent = shortenNum(
-      data.dashboard.sales_over_time_week[7].total
+      await data.dashboard.sales_over_time_week[7].total
     );
     lastWeekOrdersSpan.textContent = shortenNum(
-      data.dashboard.sales_over_time_week[7].orders
+      await data.dashboard.sales_over_time_week[7].orders
     );
 
     lastMonthTotalSpan.textContent = shortenNum(
-      data.dashboard.sales_over_time_year[2].total
+      await data.dashboard.sales_over_time_year[2].total
     );
     lastMonthOrdersSpan.textContent = shortenNum(
-      data.dashboard.sales_over_time_year[2].orders
+      await data.dashboard.sales_over_time_year[2].orders
     );
 
+    const data_values = [];
+    for (const item in data.dashboard.sales_over_time_week) {
+      data_values.push(data.dashboard.sales_over_time_week[item].total);
+    }
+
+    console.log(data_values);
+
     // Create Chart
+    const labels = [
+      "Today",
+      "Yesterday",
+      "Day 3",
+      "Day 4",
+      "Day 5",
+      "Day 6",
+      "Day 7",
+    ];
+
+    const data_set = {
+      labels: labels,
+      datasets: [
+        {
+          label: "Revenue (last 7 days)",
+          backgroundColor: "rgb(255, 99, 132)",
+          borderColor: "rgb(255, 99, 132)",
+          data: data_values,
+        },
+      ],
+    };
+
+    const config = {
+      type: "bar",
+      data: data_set,
+      options: {},
+    };
+
+    const myChart = new Chart(document.getElementById("myChart"), config);
   } else {
     window.location.href = "./login.html";
   }
 };
 
 getDashboardInfo();
-
-const labels = ["January", "February", "March", "April", "May", "June"];
-
-const data = {
-  labels: labels,
-  datasets: [
-    {
-      label: "My First dataset",
-      backgroundColor: "rgb(255, 99, 132)",
-      borderColor: "rgb(255, 99, 132)",
-      data: [0, 10, 5, 2, 20, 30, 45],
-    },
-  ],
-};
-
-const config = {
-  type: "bar",
-  data: data,
-  options: {},
-};
-
-const myChart = new Chart(document.getElementById("myChart"), config);
