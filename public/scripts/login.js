@@ -17,7 +17,15 @@ const handleSubmit = async (event) => {
 
   const data = await result.json();
 
-  console.log(data);
+  if (data.access_token) {
+    sessionStorage.setItem("access_token", data.access_token);
+    sessionStorage.setItem("refresh_token", data.refresh_token);
+    window.location.href = "./index.html";
+  } else if (data.msg) {
+    alert(data.msg);
+  } else {
+    alert("Something went wrong");
+  }
 };
 
 loginForm.addEventListener("submit", handleSubmit);
