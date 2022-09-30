@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./styles/index.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js" defer async></script>
     <script type="module" src="./scripts/index.js" async defer></script>
@@ -31,15 +37,24 @@
         <div class="highlights">
           <div class="card">
             <h5>Today</h5>
-            <p>$1456 / 9 orders</p>
+            <p>
+              $<span id="today-total">1456</span> /
+              <span id="today-orders">9</span> orders
+            </p>
           </div>
           <div class="card">
             <h5>Last Week</h5>
-            <p>$34K / 120 orders</p>
+            <p>
+              $<span id="last-week-total">34K</span> /
+              <span id="last-week-orders">120</span> orders
+            </p>
           </div>
           <div class="card">
             <h5>Last Month</h5>
-            <p>$95K / 879 orders</p>
+            <p>
+              $<span id="last-month-total">95K</span> /
+              <span id="last-month-orders">876</span> orders
+            </p>
           </div>
         </div>
         <h2>

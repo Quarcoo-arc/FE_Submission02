@@ -12,6 +12,16 @@ const getDashboardInfo = async () => {
     },
   });
 
+  const shortenNum = (num) => {
+    if (num >= 1000000) {
+      return `${Math.floor(num / 1000000)}M`;
+    } else if (num >= 1000) {
+      return `${Math.floor(num / 1000)}K`;
+    } else {
+      return num;
+    }
+  };
+
   const data = await result.json();
 
   console.log(data);
@@ -24,6 +34,37 @@ const getDashboardInfo = async () => {
       window.location.href = "./login.html";
     }
   } else if (data.dashboard) {
+    // Update Dashboard Information
+    const todayTotalSpan = document.getElementById("today-total");
+    const lastWeekTotalSpan = document.getElementById("last-week-total");
+    const lastMonthTotalSpan = document.getElementById("last-month-total");
+
+    const todayOrdersSpan = document.getElementById("today-orders");
+    const lastWeekOrdersSpan = document.getElementById("last-week-orders");
+    const lastMonthOrdersSpan = document.getElementById("last-month-orders");
+
+    todayTotalSpan.textContent = shortenNum(
+      data.dashboard.sales_over_time_week[1].total
+    );
+    todayOrdersSpan.textContent = shortenNum(
+      data.dashboard.sales_over_time_week[1].orders
+    );
+
+    lastWeekTotalSpan.textContent = shortenNum(
+      data.dashboard.sales_over_time_week[7].total
+    );
+    lastWeekOrdersSpan.textContent = shortenNum(
+      data.dashboard.sales_over_time_week[7].orders
+    );
+
+    lastMonthTotalSpan.textContent = shortenNum(
+      data.dashboard.sales_over_time_year[2].total
+    );
+    lastMonthOrdersSpan.textContent = shortenNum(
+      data.dashboard.sales_over_time_year[2].orders
+    );
+
+    // Create Chart
   } else {
     window.location.href = "./login.html";
   }
