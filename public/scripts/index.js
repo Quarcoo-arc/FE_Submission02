@@ -1,3 +1,36 @@
+import { checkAuth, getNewToken } from "./auth.js";
+
+//Check if there is an access token
+checkAuth();
+
+const getDashboardInfo = async () => {
+  const result = await fetch("https://freddy.codesubmit.io/dashboard", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + sessionStorage.getItem("access_token"),
+    },
+  });
+
+  const data = await result.json();
+
+  console.log(data);
+
+  if (data.msg === "Token has expired") {
+    const sessionRefreshed = await getNewToken();
+    if (sessionRefreshed) {
+      getDashboardInfo();
+    } else {
+      window.location.href = "./login.html";
+    }
+  } else if (data.dashboard) {
+  } else {
+    window.location.href = "./login.html";
+  }
+};
+
+getDashboardInfo();
+
 const labels = ["January", "February", "March", "April", "May", "June"];
 
 const data = {
