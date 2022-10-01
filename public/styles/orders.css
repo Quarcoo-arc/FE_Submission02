@@ -65,7 +65,6 @@ input {
   border: 1.6px solid #a8a8a8;
   width: 15rem;
   height: 1.8rem;
-  margin-bottom: 1.2rem;
   box-sizing: border-box;
   padding-left: 0.5rem;
   font-size: 1.1rem;
@@ -171,4 +170,77 @@ a {
 #right {
   -webkit-transform: rotate(90deg);
   transform: rotate(90deg);
+}
+
+/* Media Queries */
+
+@media only screen and (max-width: 768px) {
+  nav {
+    width: 8rem;
+  }
+
+  main {
+    width: 85%;
+    padding: 0rem 2rem 1rem;
+  }
+
+  input {
+    width: 12rem;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  main {
+    width: 80%;
+    padding: 0rem 1rem 1rem;
+  }
+
+  input {
+    width: 7rem;
+    height: 1.4rem;
+    font-size: 0.7rem;
+  }
+
+  div {
+    font-size: 0.7rem;
+  }
+
+  h2 {
+    font-size: 1rem;
+  }
+
+  h5 {
+    font-size: 0.7rem;
+  }
+
+  table {
+    font-size: 10px;
+  }
+
+  .logo {
+    width: 3.5rem;
+  }
+
+  .card {
+    margin-right: 0;
+    width: 10rem;
+    height: 2.6rem;
+  }
+
+  .text {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .links {
+    font-size: 0.8rem;
+  }
+
+  .search {
+    width: 1.4rem;
+  }
+
+  .space-between {
+    margin-bottom: 0.3rem;
+  }
 }
