@@ -3,6 +3,10 @@ import { checkAuth, getNewToken } from "./auth.js";
 //Check if there is an access token
 checkAuth();
 
+let CURRENT_DATA;
+
+let SEARCH_TERM = "";
+
 const fetchOrders = async (url) => {
   const result = await fetch(url, {
     method: "GET",
@@ -43,6 +47,72 @@ const populateTable = (data) => {
   tableBody.innerHTML = tableRows;
 };
 
+const checkPagination = (data) => {
+  const startNum = document.getElementById("current-page");
+  const endNum = document.getElementById("end-page");
+
+  const rightArrow = document.getElementById("right");
+  const leftArrow = document.getElementById("left");
+
+  startNum.textContent = data.page;
+  endNum.textContent = Math.ceil(data.total / 50);
+
+  if (startNum.textContent === endNum.textContent) {
+    rightArrow.classList.add("disabled");
+  }
+  if (endNum.textContent === "1") {
+    leftArrow.classList.add("disabled");
+    rightArrow.classList.add("disabled");
+  }
+  if (
+    startNum.textContent !== endNum.textContent &&
+    rightArrow.classList.contains("disabled")
+  ) {
+    rightArrow.classList.remove("disabled");
+  }
+
+  if (startNum.textContent === "1") {
+    leftArrow.classList.add("disabled");
+  }
+  if (startNum.textContent !== "1") {
+    leftArrow.classList.remove("disabled");
+  }
+};
+
+const switchPages = async (direction) => {
+  const endNum = Math.ceil(CURRENT_DATA.total / 50);
+  if (
+    (direction === "next" && CURRENT_DATA.page === endNum) ||
+    (direction === "previous" && CURRENT_DATA.page === 1)
+  ) {
+    return;
+  }
+  const result = await fetchOrders(
+    `https://freddy.codesubmit.io/orders?page=${
+      direction === "next" ? CURRENT_DATA.page + 1 : CURRENT_DATA.page - 1
+    }&q=${SEARCH_TERM}`
+  );
+  console.log(result);
+
+  // If Token has expired, refresh it
+  if (result.msg === "Token has expired") {
+    const sessionRefreshed = await getNewToken();
+    if (sessionRefreshed) {
+      switchPages(CURRENT_DATA, keyword, direction);
+    } else {
+      window.location.href = "./login.html";
+    }
+
+    // If Token is not expired, populate orders page with relevant info
+  } else if (result.orders) {
+    populateTable(result.orders);
+    checkPagination(result);
+    CURRENT_DATA = result;
+  } else {
+    window.location.href = "./login.html";
+  }
+};
+
 // Load Orders Info
 const getOrdersInfo = async () => {
   const data = await fetchOrders("https://freddy.codesubmit.io/orders");
@@ -61,27 +131,30 @@ const getOrdersInfo = async () => {
     // If Token is not expired, populate orders page with relevant info
   } else if (data.orders) {
     populateTable(data.orders);
+    checkPagination(data);
 
     // Search for specific orders
+
+    CURRENT_DATA = data;
 
     const searchOrders = async (event) => {
       event.preventDefault();
 
-      const keyword = searchForm.searchTerm.value;
+      SEARCH_TERM = searchForm.searchTerm.value;
 
       searchForm.searchTerm.value = "";
 
-      console.log(keyword);
+      console.log(SEARCH_TERM);
 
       const data = await fetchOrders(
-        `https://freddy.codesubmit.io/orders?q=${keyword}`
+        `https://freddy.codesubmit.io/orders?q=${SEARCH_TERM}`
       );
 
       if (data.msg === "Token has expired") {
         const sessionRefreshed = await getNewToken();
         if (sessionRefreshed) {
           data = await fetchOrders(
-            `https://freddy.codesubmit.io/orders?q=${keyword}`
+            `https://freddy.codesubmit.io/orders?q=${SEARCH_TERM}`
           );
         } else {
           window.location.href = "./login.html";
@@ -90,7 +163,9 @@ const getOrdersInfo = async () => {
         // If Token is not expired, populate orders page with relevant info
       } else if (data.orders) {
         console.log(data);
+        CURRENT_DATA = data;
         populateTable(data.orders);
+        checkPagination(data);
       } else {
         window.location.href = "./login.html";
       }
@@ -99,6 +174,15 @@ const getOrdersInfo = async () => {
     const searchForm = document.getElementById("searchForm");
 
     searchForm.addEventListener("submit", searchOrders);
+
+    // Switch pages
+
+    const rightArrow = document.getElementById("right");
+    const leftArrow = document.getElementById("left");
+
+    rightArrow.addEventListener("click", switchPages.bind(null, "next"));
+    leftArrow.addEventListener("click", switchPages.bind(null, "previous"));
+
     // If token is invalid, redirect to login page
   } else {
     window.location.href = "./login.html";

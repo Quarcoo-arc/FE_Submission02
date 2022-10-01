@@ -146,3 +146,29 @@ a {
   justify-content: space-between;
   margin-bottom: 2rem;
 }
+
+.pagination {
+  margin: 1rem 0 1.5rem;
+}
+
+.arrow {
+  width: 0.6rem;
+  margin: 0 0.2rem;
+  cursor: pointer;
+}
+
+.disabled {
+  filter: invert(0%) sepia(4%) saturate(0%) hue-rotate(5deg) brightness(2%)
+    contrast(0%);
+  cursor: not-allowed;
+}
+
+#left {
+  -webkit-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+
+#right {
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
