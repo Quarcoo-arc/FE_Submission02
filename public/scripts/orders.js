@@ -1,4 +1,4 @@
-import { checkAuth, getNewToken } from "./auth.js";
+import { checkAuth, getNewToken, logout } from "./auth.js";
 
 //Check if there is an access token
 checkAuth();
@@ -182,6 +182,12 @@ const getOrdersInfo = async () => {
 
     rightArrow.addEventListener("click", switchPages.bind(null, "next"));
     leftArrow.addEventListener("click", switchPages.bind(null, "previous"));
+
+    // Logout
+
+    const logoutBtn = document.getElementById("logout");
+
+    logoutBtn.addEventListener("click", logout);
 
     // If token is invalid, redirect to login page
   } else {

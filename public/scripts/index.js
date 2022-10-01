@@ -1,4 +1,4 @@
-import { checkAuth, getNewToken } from "./auth.js";
+import { checkAuth, getNewToken, logout } from "./auth.js";
 
 //Check if there is an access token
 checkAuth();
@@ -101,8 +101,8 @@ const getDashboardInfo = async () => {
       datasets: [
         {
           label: "Revenue (last 7 days)",
-          backgroundColor: "rgb(255, 99, 132)",
-          borderColor: "rgb(255, 99, 132)",
+          backgroundColor: "rgb(31, 46, 120)",
+          borderColor: "rgb(31, 46, 120)",
           data: data_values_week,
         },
       ],
@@ -141,8 +141,8 @@ const getDashboardInfo = async () => {
           label: showSecondChart
             ? "Revenue (last 12 months)"
             : "Revenue (last 7 days)",
-          backgroundColor: "rgb(255, 99, 132)",
-          borderColor: "rgb(255, 99, 132)",
+          backgroundColor: "rgb(31, 46, 120)",
+          borderColor: "rgb(31, 46, 120)",
           data: showSecondChart ? data_values_year : data_values_week,
         },
       ];
@@ -172,6 +172,12 @@ const getDashboardInfo = async () => {
     });
 
     tableBody.innerHTML = tableRows;
+
+    // Logout
+
+    const logoutBtn = document.getElementById("logout");
+
+    logoutBtn.addEventListener("click", logout);
 
     // If token is invalid, redirect to login page
   } else {

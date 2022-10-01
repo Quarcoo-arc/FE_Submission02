@@ -22,4 +22,9 @@ const getNewToken = async () => {
   }
 };
 
-export { checkAuth, getNewToken };
+const logout = () => {
+  sessionStorage.clear();
+  window.location.href = "./login.html";
+};
+
+export { checkAuth, getNewToken, logout };
