@@ -6,6 +6,7 @@
 body {
   background-color: #d8d8d8;
   color: #15171c;
+  font-family: "myriad-pro-regular", "Source Sans Pro", sans-serif;
 }
 
 header {
@@ -34,6 +35,19 @@ main {
 
 table {
   border: 2px solid #a8a8a8;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #a8a8a8;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
 }
 
 h2 {
