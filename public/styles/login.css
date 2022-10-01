@@ -96,3 +96,35 @@ button {
 .logo {
   width: 7rem;
 }
+
+/* Media Queries */
+
+@media only screen and (max-width: 500px) {
+  main {
+    width: 15rem;
+    height: 20rem;
+  }
+
+  form {
+    margin-top: 1rem;
+  }
+
+  input {
+    width: 12rem;
+    font-size: 1rem;
+  }
+
+  button {
+    width: 12rem;
+    margin-top: 0.8rem;
+  }
+
+  .heading {
+    font-size: 1.2rem;
+    width: 7rem;
+  }
+
+  .logo {
+    width: 4.5rem;
+  }
+}
