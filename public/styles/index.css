@@ -1,117 +1,22 @@
-* {
-  margin: 0;
-  padding: 0;
-}
+@import url(./base.css);
 
-body {
-  background-color: #d8d8d8;
-  color: #15171c;
-  font-family: "myriad-pro-regular", "Source Sans Pro", sans-serif;
-  font-weight: 600;
-}
-
-li {
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-  color: #15171c;
-}
-
-header {
-  width: 100%;
-  background-color: #1f2e78;
-  height: 2.2rem;
-}
-
-nav {
-  width: 10rem;
-  display: flex;
-  align-items: center;
-  padding-top: 2rem;
-  flex-direction: column;
-}
+@import url(./shared.css);
 
 main {
-  border-left: 1px solid #a8a8a8;
-  display: flex;
   width: 90%;
-  min-height: 93.8vh;
   padding: 0rem 4rem 1rem;
-  box-sizing: border-box;
-  flex-direction: column;
 }
 
 table {
-  border: 2px solid #a8a8a8;
-  border-collapse: collapse;
-  width: 100%;
+  margin-bottom: 1.5rem;
 }
 
-td,
-th {
-  border: 1px solid #a8a8a8;
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
-
-h2 {
-  margin: 1rem 0;
-}
-
-.circles {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  width: 5rem;
-  align-items: center;
-  height: inherit;
-  margin-left: 1.3rem;
-}
-
-.circle {
-  border-radius: 50%;
-  width: 1.3rem;
-  height: 1.3rem;
-}
-
-.red {
-  background-color: #e02020;
-}
-
-.yellow {
-  background-color: #f7b500;
-}
-
-.green {
-  background-color: #6dd400;
-}
-
-.logo {
-  width: 5rem;
-}
-
-.links {
-  margin-top: 2rem;
-  display: flex;
-  flex-direction: column;
-  height: 7rem;
-  justify-content: space-evenly;
+h2:not(:first-child) {
+  margin-top: 3rem;
 }
 
 .space-between {
   max-width: 100%;
-  justify-content: space-between;
-}
-
-.flex-container {
-  display: flex;
-  flex-direction: row;
 }
 
 .highligths {
@@ -200,39 +105,7 @@ input:checked + .slider:before {
 
 /* Media Queries */
 
-@media only screen and (max-width: 768px) {
-  nav {
-    width: 8rem;
-  }
-
-  main {
-    width: 85%;
-    padding: 0rem 2rem 1rem;
-  }
-}
-
 @media only screen and (max-width: 500px) {
-  main {
-    width: 80%;
-    padding: 0rem 1rem 1rem;
-  }
-
-  h2 {
-    font-size: 1rem;
-  }
-
-  h5 {
-    font-size: 0.7rem;
-  }
-
-  table {
-    font-size: 10px;
-  }
-
-  .logo {
-    width: 3.5rem;
-  }
-
   .card {
     margin-right: 0;
     width: 10rem;
@@ -242,9 +115,5 @@ input:checked + .slider:before {
   .text {
     font-size: 1rem;
     margin-top: 0.5rem;
-  }
-
-  .links {
-    font-size: 0.8rem;
   }
 }

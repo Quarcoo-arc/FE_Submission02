@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #d8d8d8;
+  color: #15171c;
+  font-family: "myriad-pro-regular", "Source Sans Pro", sans-serif;
+  font-weight: 600;
+}
+
+header {
+  width: 100%;
+  background-color: #1f2e78;
+  height: 2.2rem;
+}
+
+.circles {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 5rem;
+  align-items: center;
+  height: inherit;
+  margin-left: 1.3rem;
+}
+
+.circle {
+  border-radius: 50%;
+  width: 1.3rem;
+  height: 1.3rem;
+}
+
+.red {
+  background-color: #e02020;
+}
+
+.yellow {
+  background-color: #f7b500;
+}
+
+.green {
+  background-color: #6dd400;
+}

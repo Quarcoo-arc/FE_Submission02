@@ -1,0 +1,39 @@
+/* Media Queries */
+
+@media only screen and (max-width: 768px) {
+  nav {
+    width: 8rem;
+  }
+
+  main {
+    width: 85%;
+    padding: 0rem 2rem 1rem;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  main {
+    width: 80%;
+    padding: 0rem 1rem 1rem;
+  }
+
+  h2 {
+    font-size: 1rem;
+  }
+
+  h5 {
+    font-size: 0.7rem;
+  }
+
+  table {
+    font-size: 10px;
+  }
+
+  .logo {
+    width: 3.5rem;
+  }
+
+  .links {
+    font-size: 0.8rem;
+  }
+}
