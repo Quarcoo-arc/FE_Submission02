@@ -7,6 +7,7 @@ body {
   background-color: #d8d8d8;
   color: #15171c;
   font-family: "myriad-pro-regular", "Source Sans Pro", sans-serif;
+  font-weight: 600;
 }
 
 li {
@@ -35,9 +36,9 @@ nav {
 main {
   border-left: 1px solid #a8a8a8;
   display: flex;
-  width: 100%;
+  width: 90%;
   min-height: 93.8vh;
-  padding: 0rem 2rem 1rem;
+  padding: 0rem 4rem 1rem;
   box-sizing: border-box;
   flex-direction: column;
 }
@@ -103,6 +104,11 @@ h2 {
   justify-content: space-evenly;
 }
 
+.space-between {
+  max-width: 100%;
+  justify-content: space-between;
+}
+
 .flex-container {
   display: flex;
   flex-direction: row;
@@ -114,13 +120,19 @@ h2 {
 }
 
 .card {
-  width: 8rem;
-  height: 2.5rem;
+  width: 15rem;
+  height: 4rem;
   border: 2px solid #a8a8a8;
   display: inline-block;
-  margin-right: 1rem;
+  margin-right: 2rem;
   margin-bottom: 1rem;
-  padding: 0.4rem;
+  padding: 0.5rem;
+}
+
+.text {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  font-weight: 400;
 }
 
 /* The switch - the box around the slider */
@@ -184,4 +196,55 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+/* Media Queries */
+
+@media only screen and (max-width: 768px) {
+  nav {
+    width: 8rem;
+  }
+
+  main {
+    width: 85%;
+    padding: 0rem 2rem 1rem;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  main {
+    width: 80%;
+    padding: 0rem 1rem 1rem;
+  }
+
+  h2 {
+    font-size: 1rem;
+  }
+
+  h5 {
+    font-size: 0.7rem;
+  }
+
+  table {
+    font-size: 10px;
+  }
+
+  .logo {
+    width: 3.5rem;
+  }
+
+  .card {
+    margin-right: 0;
+    width: 10rem;
+    height: 2.6rem;
+  }
+
+  .text {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .links {
+    font-size: 0.8rem;
+  }
 }

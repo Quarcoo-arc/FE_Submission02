@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles/index.css" />
@@ -37,27 +37,27 @@
         <div class="highlights">
           <div class="card">
             <h5>Today</h5>
-            <p>
+            <p class="text">
               $<span id="today-total"></span> /
               <span id="today-orders"></span> orders
             </p>
           </div>
           <div class="card">
             <h5>Last Week</h5>
-            <p>
+            <p class="text">
               $<span id="last-week-total"></span> /
               <span id="last-week-orders"></span> orders
             </p>
           </div>
           <div class="card">
             <h5>Last Month</h5>
-            <p>
+            <p class="text">
               $<span id="last-month-total"></span> /
               <span id="last-month-orders"></span> orders
             </p>
           </div>
         </div>
-        <h2>
+        <h2 class="flex-container space-between">
           <span id="chart-title">Revenue (last 7 days)</span>
           <label class="switch">
             <input id="toggleBtn" type="checkbox" />
